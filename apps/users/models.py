@@ -23,3 +23,11 @@ class EstoreUser(AbstractUser):
             blank=True,
             null=True)
     address = models.TextField(blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Foydalanuvchi"
+        verbose_name_plural = "Foydalanuvchilar"
+    
+    def __str__(self):
+        return self.get_full_name()
