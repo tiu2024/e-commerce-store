@@ -1,27 +1,36 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from .models import EstoreUser
+from .models import ShopUser
 
 
-class CustomUserChangeForm(UserChangeForm):
-    class Meta(UserChangeForm.Meta):
-        model = EstoreUser
-        fields = '__all__'
+@admin.register(ShopUser)
+class ShopUserAdmin(UserAdmin):
 
-
-class CustomUserCreationForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = EstoreUser
-        fields = ('username', 'email', 'user_type')
-
-
-@admin.register(EstoreUser)
-class CustomUserAdmin(UserAdmin):
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-
-    list_display = ('username', 'first_name', 'last_name', 'user_type', 'date_joined')
-    list_filter = ('user_type', 'date_joined')
-    search_fields = ('username', 'first_name', 'last_name')
+    list_display = ('username', 'first_name', 'last_name', 'user_type', 'last_login')
+    list_filter = ('user_type',)
+    search_fields = ('username', 'first_name', 'last_name', 'user_type')
     ordering = ('-date_joined',)
+
+    fieldsets = (
+        (None, {'fields': ('username', 'password')}),
+        (('Personal Info'), {'fields': ('first_name', 'last_name')}),
+        (('Shop Info'), {'fields': ('user_type',)}),
+        (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 
+                                      'user_permissions')}),
+        (('Important Dates'), {'fields': ('last_login', 'date_joined')}),
+    )
+
+    add_fieldsets = (
+        (None, {
+            'classes': 'wide',
+            'fields': ('username', 'password1', 'password2', 'user_type')}),
+
+        (('Personal Info'), {
+            'classes': 'wide',
+            'fields': ('first_name', 'last_name')}),
+
+        (('Permissions'), {
+            'classes': 'wide',
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 
+                                      'user_permissions')}),
+    )
