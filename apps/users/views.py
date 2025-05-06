@@ -19,3 +19,7 @@ def login(request):
         form = AuthenticationForm()
 
     return render(request, "users/login.html", {'form': form})
+
+
+def admin_dashboard(request):
+    return render(request, "users/admin_dashboard.html", {})
