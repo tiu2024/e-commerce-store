@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
 
-def login(request):
+def my_login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
 
@@ -12,8 +12,7 @@ def login(request):
             user = form.get_user()
             login(request, user)
 
-            return HttpResponse(
-                f"Username: f{request.user.username}, User type: f{request.user.user_type}")
+        
     else:
         form = AuthenticationForm()
 
