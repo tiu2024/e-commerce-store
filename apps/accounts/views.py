@@ -5,7 +5,6 @@ from django.http import HttpResponse
 
 
 def login(request):
-
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
 
@@ -18,8 +17,4 @@ def login(request):
     else:
         form = AuthenticationForm()
 
-    return render(request, "users/login.html", {'form': form})
-
-
-def admin_dashboard(request):
-    return render(request, "users/admin_dashboard.html", {})
+    return render(request, "accounts/login.html", {'form': form})

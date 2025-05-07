@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Admin Panel | Multi-Shop Platform{% endblock %}</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>{% block title %}Admin Panel | Yuklamalarni taqsimlashda raqamli tizimlarga o’tishning mavjud yechim-lari va ularning kamchiliklariMulti-Shop Platform{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <!-- Custom Admin CSS -->
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
     <style>
         body {
@@ -50,7 +47,6 @@
 <body>
     <div class="container-fluid">
         <div class="row g-0">
-            <!-- Sidebar -->
             <div class="col-md-3 col-lg-2 sidebar py-3">
                 <div class="d-flex align-items-center justify-content-center py-3 mb-4 border-bottom">
                     <h4 class="m-0">Multi-Shop Admin</h4>
@@ -84,9 +80,7 @@
                 </div>
             </div>
             
-            <!-- Main Content -->
             <div class="col-md-9 col-lg-10 admin-content">
-                <!-- Admin Header -->
                 <div class="admin-header py-3 px-4 d-flex justify-content-between align-items-center">
                     <div>
                         <h4 class="mb-0">{% block header_title %}Admin Panel{% endblock %}</h4>
@@ -128,9 +122,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom Admin JS -->
     <script src="{% static 'js/admin.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
